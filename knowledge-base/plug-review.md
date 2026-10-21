@@ -17,6 +17,7 @@ Rate each check from 0 to 100. If a check covers many items, the rating is the p
    - authData is used only for non-secret URL parts, such as the subdomain.
    - Every host called is whitelisted.
    - For OAuth apps, each action and trigger lists its own scopes.
+   - Every action and every non-manual trigger uses the same connection version (`authid`) as the plug's `preferedauthversion`, on both the action row and its published (or draft) `action_version` rows. A split means one Tally connection cannot power the whole plug.
 
    Rate it.
 5. **Matches the API docs.** The method, URL, query and body match the docs. No parameter is invented. IDs in URLs are encoded. Rate it.
