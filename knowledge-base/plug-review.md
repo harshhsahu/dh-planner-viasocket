@@ -17,6 +17,7 @@ Rate each check from 0 to 100. If a check covers many items, the rating is the p
    - authData is used only for non-secret URL parts, such as the subdomain.
    - Every host called is whitelisted.
    - For OAuth apps, each action and trigger lists its own scopes.
+   - Every action and non-manual trigger uses the plug's `preferedauthversion` (or the one connection version the plug is meant to ship with). The action row `authid` / `authidlookup` and each version row `authid` match each other. A mixed plug breaks flows that reuse one connection.
 
    Rate it.
 5. **Matches the API docs.** The method, URL, query and body match the docs. No parameter is invented. IDs in URLs are encoded. Rate it.

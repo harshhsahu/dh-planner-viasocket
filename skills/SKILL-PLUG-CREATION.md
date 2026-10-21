@@ -86,8 +86,8 @@ decide all design). **Already in context — don't re-fetch:** the search/GET re
    A failed op → read the error, fix only that op, rerun it (≤3 tries). A create that returned ids is done — never redo it.
    Action/plug metadata MERGEs happen here — not at publish time.
 
-5. **Verify** with parallel reads (use `fields`): plug, connections, actions, each version (`rowid,status,inputjson`) and its
-   mappings — versions `drafted`, every field in `inputjson.blocks`, dynamic fields have `source`, every called
+5. **Verify** with parallel reads (use `fields`): plug (`preferedauthversion`), connections, actions (`authid,authidlookup`), each version (`rowid,status,inputjson,authid`) and its
+   mappings — every non-manual action/trigger shares one `authid` with the plug preferred connection and its version row, versions `drafted`, every field in `inputjson.blocks`, dynamic fields have `source`, every called
    component mapped, `isaiaction: true`, and each action `metadata.aiLogs` has a create/update entry from this run.
 6. **Connect & dry run** (§4.1–4.2) — reuse a valid existing connection without asking; otherwise ask the user to
    create one, then safely run everything built and fix what fails.
