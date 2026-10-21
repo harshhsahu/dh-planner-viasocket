@@ -79,9 +79,10 @@ Add or change one **{{ENTITY_TYPE}}** (type fixed by the UI) on an existing plug
    - durable findings this run (endpoints, quirks, components; ≤4 KB, no secrets) → MERGE the plug
      (`updatePluginDetails`) `metadata.aiContext` **now**, not at publish time.
 5. **Verify** (use `fields`): the action (`getActionDetails`), the version (`getActionVersions` → the `versionId` row,
-   `rowid,status,inputjson`) and its mappings — version `drafted`, every field in `inputjson.blocks`, dynamic fields
-   have `source`, every called component mapped, `isaiaction: true`, and the action `metadata.aiLogs` has a
-   create/update entry from this run.
+   `rowid,status,inputjson,authid`) and its mappings — version `drafted`, action `authid`/`authidlookup` and version
+   `authid` match and equal plug `preferedauthversion` (non-manual triggers included), every field in `inputjson.blocks`,
+   dynamic fields have `source`, every called component mapped, `isaiaction: true`, and the action `metadata.aiLogs`
+   has a create/update entry from this run.
 6. **Connect & dry run** (§4.1–4.2) — reuse a valid existing connection without asking; otherwise ask the user to
    create one, then safely run the new/changed fields and the {{ENTITY_TYPE}} and fix what fails.
 7. **Publish?** (§4.3) — ask whether to publish, then private vs public; on yes publish accordingly. Publish flips
